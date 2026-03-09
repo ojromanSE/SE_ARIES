@@ -1,0 +1,46 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+*.egg
+.eggs/
+venv/
+env/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+*.sqlite
+*.db
+
+# FastAPI / Uvicorn
+.env
+.env.local
+.env.*.local
+
+# Node / React
+node_modules/
+frontend/dist/
+frontend/build/
+*.tsbuildinfo
+.cache/
+.parcel-cache/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Docker
+*.log
+
+# Data
+backend/data/
+backend/*.db

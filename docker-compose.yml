@@ -1,0 +1,40 @@
+version: '3.9'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: se_aries_backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+      - aries_data:/app/data
+    environment:
+      - DATABASE_URL=sqlite+aiosqlite:////app/data/se_aries.db
+      - DEBUG=false
+      - SECRET_KEY=${SECRET_KEY:-change-me-in-production}
+    restart: unless-stopped
+    networks:
+      - aries_net
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: se_aries_frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - aries_net
+
+volumes:
+  aries_data:
+
+networks:
+  aries_net:
+    driver: bridge
