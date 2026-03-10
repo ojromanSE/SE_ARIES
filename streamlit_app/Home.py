@@ -17,10 +17,15 @@ st.set_page_config(
 import sys, os
 sys.path.insert(0, os.path.dirname(__file__))
 
-from services.db import init_db, get_db, ACProperty, ACProject, ACScenario, ACEconomic, ACProduct
-from components.auth import require_auth, logout
+try:
+    from services.db import init_db, get_db, ACProperty, ACProject, ACScenario, ACEconomic, ACProduct
+    from components.auth import require_auth, logout
+    init_db()
+except Exception as e:
+    st.error(f"Startup error: {e}")
+    st.exception(e)
+    st.stop()
 
-init_db()
 require_auth()
 
 # ── Sidebar ───────────────────────────────────────────────────────────────

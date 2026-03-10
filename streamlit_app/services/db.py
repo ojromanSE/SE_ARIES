@@ -13,8 +13,9 @@ from sqlalchemy.orm import DeclarativeBase, relationship, Session, sessionmaker
 from sqlalchemy.sql import func as sqlfunc
 from datetime import datetime
 
-# DB path — shared with FastAPI backend
-DB_PATH = os.environ.get("SE_ARIES_DB", str(Path(__file__).parent.parent.parent / "backend" / "se_aries.db"))
+# DB path — use /tmp on Streamlit Cloud (writable), local path otherwise
+_default_db = Path("/tmp/se_aries.db")
+DB_PATH = os.environ.get("SE_ARIES_DB", str(_default_db))
 DATABASE_URL = f"sqlite:///{DB_PATH}"
 
 engine = create_engine(DATABASE_URL, connect_args={"check_same_thread": False})
