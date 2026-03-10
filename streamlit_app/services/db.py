@@ -303,19 +303,7 @@ def init_db():
 
 
 def _seed_admin():
-    from passlib.context import CryptContext
-    pwd = CryptContext(schemes=["bcrypt"], deprecated="auto")
-    with SessionLocal() as db:
-        user = db.query(User).filter(User.username == "admin").first()
-        if not user:
-            db.add(User(
-                username="admin",
-                email="admin@se-aries.local",
-                full_name="Administrator",
-                hashed_password=pwd.hash("admin123"),
-                role="admin",
-            ))
-            db.commit()
+    pass  # auth removed
 
 
 def get_db() -> Session:
