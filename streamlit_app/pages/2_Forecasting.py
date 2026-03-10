@@ -9,7 +9,6 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
 from services.db import init_db, get_db, ACProperty, ACProduct, ACScenario, ACEconomic
 from services.decline_curve import run_dca, fit_decline
-from components.auth import require_auth
 from components.charts import decline_curve_chart
 from datetime import date
 import plotly.graph_objects as go
@@ -17,7 +16,6 @@ from plotly.subplots import make_subplots
 
 st.set_page_config(page_title="Forecasting — SE_ARIES", layout="wide", page_icon="📉")
 init_db()
-require_auth()
 
 st.title("📉 Decline Curve Analysis")
 st.caption("Interactive production forecasting using decline curve methods")

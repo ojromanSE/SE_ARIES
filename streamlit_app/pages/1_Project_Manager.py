@@ -10,12 +10,10 @@ from services.db import (
     get_db, init_db, ACProperty, ACProject, ACScenario,
     project_property, Base
 )
-from components.auth import require_auth
 from datetime import datetime, date
 
 st.set_page_config(page_title="Project Manager — SE_ARIES", layout="wide", page_icon="📁")
 init_db()
-require_auth()
 
 st.title("📁 Project Manager")
 st.caption("Manage properties, projects, and economic scenarios")

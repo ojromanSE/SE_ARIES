@@ -19,14 +19,11 @@ sys.path.insert(0, os.path.dirname(__file__))
 
 try:
     from services.db import init_db, get_db, ACProperty, ACProject, ACScenario, ACEconomic, ACProduct
-    from components.auth import require_auth, logout
     init_db()
 except Exception as e:
     st.error(f"Startup error: {e}")
     st.exception(e)
     st.stop()
-
-require_auth()
 
 # ── Sidebar ───────────────────────────────────────────────────────────────
 with st.sidebar:
@@ -37,9 +34,6 @@ with st.sidebar:
     </div>
     """, unsafe_allow_html=True)
     st.markdown("---")
-    st.caption(f"👤 {st.session_state.get('full_name', 'User')} · {st.session_state.get('user_role', '').capitalize()}")
-    if st.button("Logout", use_container_width=True):
-        logout()
 
 # ── Dashboard ─────────────────────────────────────────────────────────────
 st.title("⚡ SE_ARIES Dashboard")

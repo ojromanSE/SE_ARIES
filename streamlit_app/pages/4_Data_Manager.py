@@ -8,12 +8,10 @@ import sys, os
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
 from services.db import init_db, get_db, ACProperty, ACProduct
-from components.auth import require_auth
 from datetime import date
 
 st.set_page_config(page_title="Data Manager — SE_ARIES", layout="wide", page_icon="🗄️")
 init_db()
-require_auth()
 
 st.title("🗄️ Data Manager")
 st.caption("Import/export production history and property data")

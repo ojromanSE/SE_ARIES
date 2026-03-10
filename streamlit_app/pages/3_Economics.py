@@ -9,14 +9,12 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
 from services.db import init_db, get_db, ACProperty, ACScenario, ACEconomic, ACProductForecast
 from services.economics import EconInputs, run_economics
-from components.auth import require_auth
 from components.charts import decline_curve_chart, cash_flow_chart, waterfall_chart, sensitivity_tornado
 from datetime import datetime, date
 from sqlalchemy import delete
 
 st.set_page_config(page_title="Economics — SE_ARIES", layout="wide", page_icon="💰")
 init_db()
-require_auth()
 
 st.title("💰 Economic Simulator")
 st.caption("Keyword-driven economic model — NPV, IRR, cash flow, reserves (mirrors ARIES AC_ECONOMIC)")
